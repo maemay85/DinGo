@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchAllProducts = createAsyncThunk("/products", async () => {
+export const fetchAllProductsAsync = createAsyncThunk("/products", async () => {
   try {
-    const { data } = await axios.get("/products");
+    const { data } = await axios.get("/api/products");
     return data;
   } catch (err) {
     console.log(err.message);
@@ -15,10 +15,14 @@ const allProductSlice = createSlice({
   initialState: {},
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
+    builder.addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
       return action.payload;
     });
   },
 });
+
+export const selectAllProducts = (state) => {
+  return state.allProducts;
+};
 
 export default allProductSlice.reducer;
