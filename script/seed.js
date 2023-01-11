@@ -5,7 +5,7 @@ const db = require("../server/db");
 // const Product = require("../server/db/models/Product");
 // const Order = require("../server/db/models/Order");
 
-const { User, Order, Product } = require("../server/db/models");
+const { User, Order, Product, OrderProducts } = require("../server/db/models");
 
 /**
  * seed - this function clears the database, updates tables to
@@ -410,6 +410,15 @@ const orderData = [
   },
 ];
 
+const orderProductsData = [
+  {
+    orderId: 3,
+    productId: 4,
+    orderProductQty: 1,
+    totalPrice: 2.99,
+  },
+];
+
 async function seed() {
   try {
     await db.sync({ force: true }); // clears db and matches models to tables
@@ -419,7 +428,10 @@ async function seed() {
     await Promise.all(
       users.map((user) => User.create(user)),
       productData.map((product) => Product.create(product)),
-      orderData.map((order) => Order.create(order))
+      orderData.map((order) => Order.create(order)),
+      orderProductsData.map((orderProduct) =>
+        OrderProducts.create(orderProduct)
+      )
     );
 
     console.log(`seeded ${users.length} users`);
