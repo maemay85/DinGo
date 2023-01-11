@@ -1,21 +1,16 @@
 const router = require("express").Router();
-// const {
-//   models: { User },
-// } = require("../db");
-
-const User = require("../db/models/User");
+const Order = require("../db/models/Order");
 
 module.exports = router;
 
 router.get("/", async (req, res, next) => {
   try {
-    const users = await User.findAll({
+    const orders = await Order.findAll({
       // explicitly select only the id and username fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ["id", "username"],
     });
-    res.json(users);
+    res.json(orders);
   } catch (err) {
     next(err);
   }
@@ -23,7 +18,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:orderId", async (req, res, next) => {
   try {
-    res.json(await User.findByPk(req.params.userId));
+    res.json(await Order.findByPk(req.params.orderId));
   } catch (err) {
     next(err);
   }
@@ -31,7 +26,7 @@ router.get("/:orderId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    res.send(await User.create(req.body));
+    res.send(await Order.create(req.body));
   } catch (err) {
     next(err);
   }
@@ -39,8 +34,8 @@ router.post("/", async (req, res, next) => {
 
 router.put("/:orderId", async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId);
-    res.send(await user.update(req.body));
+    const order = await Order.findByPk(req.params.orderId);
+    res.send(await order.update(req.body));
   } catch (err) {
     next(err);
   }
@@ -48,12 +43,12 @@ router.put("/:orderId", async (req, res, next) => {
 
 router.delete("/:orderId", async (req, res, next) => {
   try {
-    await User.destroy({
+    await Order.destroy({
       where: {
-        id: req.params.userId,
+        id: req.params.orderId,
       },
     });
-    res.json(req.params.userId);
+    res.json(req.params.orderId);
   } catch (err) {
     next(err);
   }
