@@ -20,3 +20,41 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+
+router.get("/:userId", async (req, res, next) => {
+  try {
+    res.json(await User.findByPk(req.params.userId));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/", async (req, res, next) => {
+  try {
+    res.send(await User.create(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/:userId", async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId);
+    res.send(await user.update(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:userId", async (req, res, next) => {
+  try {
+    await User.destroy({
+      where: {
+        id: req.params.userId,
+      },
+    });
+    res.json(req.params.userId);
+  } catch (err) {
+    next(err);
+  }
+});
