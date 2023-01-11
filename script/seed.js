@@ -364,6 +364,48 @@ const orderData = [
   {
     isComplete: false,
   },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
+  {
+    isComplete: true,
+  },
+  {
+    isComplete: false,
+  },
 ];
 
 async function seed() {
@@ -371,14 +413,16 @@ async function seed() {
     await db.sync({ force: true }); // clears db and matches models to tables
     console.log("db synced!");
 
-    // Creating Users
-    await Promise.all([userData.map((user) => User.create(user))]);
-    await Promise.all([productData.map((product) => Product.create(product))]);
-    await Promise.all([orderData.map((order) => Order.create(order))]);
+    // Creating Users, Products and Orders.
+    await Promise.all(
+      userData.map((user) => User.create(user)),
+      productData.map((product) => Product.create(product)),
+      orderData.map((order) => Order.create(order))
+    );
 
     console.log(`seeded ${userData.length} users`);
     console.log(`seeded successfully`);
-    //await db.close()
+    await db.close();
   } catch (err) {
     console.error(err);
     db.close();
