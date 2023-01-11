@@ -39,6 +39,8 @@ const User = db.define("user", {
   },
 });
 
+module.exports = User;
+
 /**
  * instanceMethods
  */
@@ -92,5 +94,3 @@ const hashPassword = async (user) => {
 User.beforeCreate(hashPassword);
 User.beforeUpdate(hashPassword);
 User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));
-
-module.exports = User;

@@ -1,15 +1,17 @@
 "use strict";
 
-const { db } = require("../server/db");
-const User = require("../server/db/models/User");
-const Product = require("../server/db/models/Product");
-const Order = require("../server/db/models/Order");
+const db = require("../server/db");
+// const User = require("../server/db/models/User");
+// const Product = require("../server/db/models/Product");
+// const Order = require("../server/db/models/Order");
+
+const { User, Order, Product } = require("../server/db/models");
 
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
-const userData = [
+const users = [
   {
     username: "vulputate",
     password: "7410",
@@ -415,14 +417,14 @@ async function seed() {
 
     // Creating Users, Products and Orders.
     await Promise.all(
-      userData.map((user) => User.create(user)),
+      users.map((user) => User.create(user)),
       productData.map((product) => Product.create(product)),
       orderData.map((order) => Order.create(order))
     );
 
-    console.log(`seeded ${userData.length} users`);
+    console.log(`seeded ${users.length} users`);
     console.log(`seeded successfully`);
-    // await db.close();
+    db.close();
   } catch (err) {
     console.error(err);
     db.close();
@@ -453,9 +455,9 @@ async function seed() {
   `Async` functions always return a promise, so we can use `catch` to handle
   any errors that might occur inside of `seed`.
 */
-/*  if (module === require.main) {
-  runSeed()
-}  */
-seed();
+if (module === require.main) {
+  seed();
+}
+
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed;
