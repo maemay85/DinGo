@@ -4,6 +4,7 @@ const router = require("express").Router();
 // } = require("../db");
 
 const User = require("../db/models/User");
+
 module.exports = router;
 
 router.get("/", async (req, res, next) => {

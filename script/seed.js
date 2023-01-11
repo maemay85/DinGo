@@ -422,7 +422,7 @@ async function seed() {
 
     console.log(`seeded ${userData.length} users`);
     console.log(`seeded successfully`);
-    await db.close();
+    // await db.close();
   } catch (err) {
     console.error(err);
     db.close();
