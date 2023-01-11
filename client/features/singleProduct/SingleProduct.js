@@ -1,34 +1,33 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleProduct, selectSingleProduct } from "../features/singleProduct/singleProductSlice";
+import {
+  fetchSingleProduct,
+  selectSingleProduct,
+} from "../features/singleProduct/singleProductSlice";
 
-
-
-const SingleKey = () => {
-
-
+const SingleProduct = () => {
   const { productId } = useParams();
 
   const singleProduct = useSelector(selectSingleProduct);
-  const { productName, description, imageUrl, price, inventory } = singleProduct
+  const { productName, description, imageUrl, price, inventory } =
+    singleProduct;
 
   const dispatch = useDispatch();
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(fetchSingleProduct(productId));
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
-    <div id='single-product'>
+    <div id="single-product">
       <h1>{productName}</h1>
-      <img src={imageUrl}/>
+      <img src={imageUrl} />
       <p>Product description: {description}</p>
       <p>Price: {price}</p>
       <p>Available: {inventory}</p>
-     </div>
+    </div>
+  );
+};
 
-  )
-}
-
-export default SingleKey
+export default SingleProduct;
