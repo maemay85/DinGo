@@ -8,12 +8,6 @@ const OrderProducts = require("./OrderProducts");
 User.hasMany(Order);
 Order.belongsTo(User);
 
-// // Order.belongsTo(User, {
-// //   // through: "UserOrders",
-// //   // as: "users",
-// //   // foreignKey: "orderId",
-// // });
-
 Order.belongsToMany(Product, {
   through: "OrderProducts",
 });
