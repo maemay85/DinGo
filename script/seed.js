@@ -196,11 +196,11 @@ const users = [
 
 const productData = [
   {
-    productName: "risus. Duis a mi",
+    productName: "14 Ounce Circle Container",
     description:
-      "malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor.",
+      "14 Ounces with a bamboo lid. It's a circle!",
     inventory: 16,
-    imageUrl: "http://walmart.com",
+    imageUrl: "/images/14ozCircleContainer.jpg",
     price: 95.17,
   },
   {
@@ -208,7 +208,7 @@ const productData = [
     description:
       "urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum.",
     inventory: 10,
-    imageUrl: "http://instagram.com",
+    imageUrl: "http://localhost:8080/",
     price: 82.63,
   },
   {

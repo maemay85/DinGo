@@ -44,10 +44,7 @@ const AllProducts = () => {
                   >
                     <CardMedia
                       component="img"
-                      // image={product.imageUrl}
-                      image={
-                        "https://cdn.shopify.com/s/files/1/0550/5912/0300/products/premia-glass-62_800x.jpg?v=1658951916"
-                      }
+                      image={product.imageUrl}
                       height="300"
                       width="300"
                     />
