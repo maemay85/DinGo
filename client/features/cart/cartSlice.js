@@ -1,16 +1,19 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchCartAsync = createAsyncThunk("cart/fetchAll", async () => {
-  try {
-    const { data } = await axios.get("/api/cart");
-    return data;
-  } catch (error) {
-    return error.message;
+export const fetchSingleOrderProductAsync = createAsyncThunk(
+  "cart/fetchAll",
+  async () => {
+    try {
+      const { data } = await axios.get("/api/cart");
+      return data;
+    } catch (error) {
+      return error.message;
+    }
   }
-});
+);
 
-export const addToCartAsync = createAsyncThunk(
+export const addOrderProductAsync = createAsyncThunk(
   "cart/addToCart",
   async ({ id, name, price }) => {
     try {
@@ -26,7 +29,7 @@ export const addToCartAsync = createAsyncThunk(
   }
 );
 
-export const deleteCartProductAsync = createAsyncThunk(
+export const deleteOrderProductAsync = createAsyncThunk(
   "cart/deleteProduct",
   async (id, name) => {
     const { data } = await axios.delete(`/api/cart/${id}`, {
@@ -37,26 +40,11 @@ export const deleteCartProductAsync = createAsyncThunk(
   }
 );
 
-export const editCartAsync = createAsyncThunk(
-  "cart/editCart",
+export const editQtyAsync = createAsyncThunk(
+  "cart/editQty",
   async ({ id, quantity }) => {
     try {
       const { data } = await axios.put(`/api/cart/${id}`, {
-        quantity,
-      });
-      return data;
-    } catch (error) {
-      return error.message;
-    }
-  }
-);
-
-export const createOrderAsync = createAsyncThunk(
-  "cart/createOrder",
-  async (id, productId, quantity) => {
-    try {
-      const { data } = await axios.post(`/api/order/${id}`, {
-        productId,
         quantity,
       });
       return data;
@@ -71,19 +59,16 @@ export const shoppingCartSlice = createSlice({
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCartAsync.fulfilled, (state, action) => {
+    builder.addCase(fetchSingleOrderProductAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    builder.addCase(addToCartAsync.fulfilled, (state, action) => {
+    builder.addCase(addOrderProductAsync.fulfilled, (state, action) => {
       state.push(action.payload);
     });
-    builder.addCase(createOrderAsync.fulfilled, (state, action) => {
-      state.push(action.payload);
-    });
-    builder.addCase(editCartAsync.fulfilled, (state, action) => {
+    builder.addCase(editQtyAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    builder.addCase(deleteCartProductAsync.fulfilled, (state, action) => {
+    builder.addCase(deleteOrderProductAsync.fulfilled, (state, action) => {
       return state.filter((product) => product.productId != action.payload);
     });
   },
