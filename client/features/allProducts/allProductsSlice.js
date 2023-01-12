@@ -21,6 +21,8 @@ const allProductSlice = createSlice({
   },
 });
 
+//TODO: we need to add, delete, edit single products
+
 export const selectAllProducts = (state) => {
   return state.allProducts;
 };

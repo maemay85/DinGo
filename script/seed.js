@@ -197,8 +197,7 @@ const users = [
 const productData = [
   {
     productName: "14 Ounce Circle Container",
-    description:
-      "14 Ounces with a bamboo lid. It's a circle!",
+    description: "14 Ounces with a bamboo lid. It's a circle!",
     inventory: 16,
     imageUrl: "/images/14ozCircleContainer.jpg",
     price: 95.17,
@@ -208,7 +207,7 @@ const productData = [
     description:
       "urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum.",
     inventory: 10,
-    imageUrl: "http://localhost:8080/",
+    imageUrl: "/images/20ozCircleContainer.jpg",
     price: 82.63,
   },
   {
@@ -216,7 +215,7 @@ const productData = [
     description:
       "cursus in, hendrerit consectetuer, cursus et, magna. Praesent",
     inventory: 21,
-    imageUrl: "https://pinterest.com",
+    imageUrl: "/images/20ozSquareContainer.jpg",
     price: 61.14,
   },
   {
@@ -224,14 +223,14 @@ const productData = [
     description:
       "a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices.",
     inventory: 3,
-    imageUrl: "https://reddit.com",
+    imageUrl: "/images/30ozPinkSet.jpg",
     price: 55.92,
   },
   {
     productName: "aliquet lobortis, nisi",
     description: "quam a felis ullamcorper viverra. Maecenas iaculis aliquet",
     inventory: 16,
-    imageUrl: "http://walmart.com",
+    imageUrl: "/images/41ozBambooSquare.jpg",
     price: 68.86,
   },
   {
@@ -239,14 +238,14 @@ const productData = [
     description:
       "Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero mauris, aliquam",
     inventory: 30,
-    imageUrl: "http://yahoo.com",
+    imageUrl: "/images/57ozBamboocircle.jpg",
     price: 90.32,
   },
   {
     productName: "malesuada fames ac turpis egestas.",
     description: "mauris id sapien. Cras",
     inventory: 26,
-    imageUrl: "http://ebay.com",
+    imageUrl: "/images/61ozBambooRectangle.jpg",
     price: 41.57,
   },
   {
@@ -254,14 +253,14 @@ const productData = [
     description:
       "velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus.",
     inventory: 24,
-    imageUrl: "http://zoom.us",
+    imageUrl: "/images/aquaCylinder.jpg",
     price: 67.46,
   },
   {
     productName: "ultrices",
     description: "pharetra, felis eget varius ultrices, mauris",
     inventory: 3,
-    imageUrl: "http://google.com",
+    imageUrl: "/images/blackPlasticSpaceship.jpg",
     price: 71.83,
   },
   {
@@ -269,21 +268,21 @@ const productData = [
     description:
       "Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget",
     inventory: 1,
-    imageUrl: "http://nytimes.com",
+    imageUrl: "/images/blackTwoSet.jpg",
     price: 32.09,
   },
   {
     productName: "posuere cubilia Curae",
     description: "neque tellus, imperdiet non, vestibulum nec, euismod",
     inventory: 13,
-    imageUrl: "https://cnn.com",
+    imageUrl: "/images/clearPlasticStackSet.jpg",
     price: 39.74,
   },
   {
     productName: "in",
     description: "est arcu ac orci. Ut",
     inventory: 8,
-    imageUrl: "http://baidu.com",
+    imageUrl: "/images/dingo_white_background.jpg",
     price: 93.81,
   },
   {
@@ -291,7 +290,7 @@ const productData = [
     description:
       "Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed",
     inventory: 26,
-    imageUrl: "https://ebay.com",
+    imageUrl: "/images/floralPatternSet.jpg",
     price: 88.42,
   },
   {
@@ -299,21 +298,21 @@ const productData = [
     description:
       "eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero.",
     inventory: 7,
-    imageUrl: "https://cnn.com",
+    imageUrl: "/images/funFruitSquare.jpg",
     price: 43.01,
   },
   {
     productName: "augue ac ipsum. Phasellus",
     description: "mi lorem, vehicula et, rutrum",
     inventory: 14,
-    imageUrl: "https://youtube.com",
+    imageUrl: "/images/pinkBlueDoublesSet.jpg",
     price: 46.96,
   },
   {
     productName: "diam lorem, auctor",
     description: "leo. Cras vehicula",
     inventory: 7,
-    imageUrl: "http://ebay.com",
+    imageUrl: "/images/purpleOrangeSippyCup.jpg",
     price: 27.15,
   },
   {
@@ -321,28 +320,28 @@ const productData = [
     description:
       "Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus",
     inventory: 26,
-    imageUrl: "https://zoom.us",
+    imageUrl: "/images/redGreenBlueSet.jpg",
     price: 17.7,
   },
   {
     productName: "dolor. Donec fringilla.",
     description: "mauris a nunc. In at pede. Cras",
     inventory: 15,
-    imageUrl: "https://naver.com",
+    imageUrl: "/images/squarePlasticSet.jpg",
     price: 85.38,
   },
   {
     productName: "elit.",
     description: "malesuada. Integer id magna et ipsum",
     inventory: 27,
-    imageUrl: "https://reddit.com",
+    imageUrl: "/images/toughGuyBlueSet.jpg",
     price: 49.35,
   },
   {
     productName: "placerat. Cras",
     description: "eu dui. Cum sociis natoque penatibus et magnis dis",
     inventory: 21,
-    imageUrl: "https://cnn.com",
+    imageUrl: "/images/ultimatePartyCup.jpg",
     price: 13.84,
   },
 ];
