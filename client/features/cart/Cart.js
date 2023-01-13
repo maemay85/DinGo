@@ -6,11 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchSingleOrderProductAsync,
   deleteOrderProductAsync,
-  selectCart,
+  selectOrderProduct,
 } from "./orderProductSlice";
 import { createOrderAsync } from "./orderSlice";
 import { Link } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import { CardContent } from "@mui/material";
@@ -19,7 +18,7 @@ import Grid from "@mui/material/Grid";
 
 const Cart = ({ Cart }) => {
   const dispatch = useDispatch();
-  const cart = useSelector(selectCart);
+  const cart = useSelector(selectOrderProduct);
 
   useEffect(() => {
     dispatch(fetchSingleOrderProductAsync());

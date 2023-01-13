@@ -25,7 +25,7 @@ router.get("/", async (req, res, next) => {
   }
 }); */
 
-router.post("/", async (req, res, next) => {
+/* router.post("/", async (req, res, next) => {
   try {
     const [order] = await Order.findOrCreate({
       where: {
@@ -43,7 +43,15 @@ router.post("/", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+}); */
+
+router.post("/", async(req, res, next) => {
+  try {
+    res.json(await OrderProducts.create(req.body))
+  } catch(err) {
+    next(err)
+  }
+})
 
 router.put("/:orderProductsId", async (req, res, next) => {
   try {

@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchSingleOrderProductAsync = createAsyncThunk(
   "cart/fetchAll",
-  async () => {
+  async (id) => {
     try {
-      const { data } = await axios.get("/api/cart");
+      const { data } = await axios.get(`/api/orderProducts/${id}`);
       return data;
     } catch (error) {
       return error.message;
@@ -17,9 +17,9 @@ export const addOrderProductAsync = createAsyncThunk(
   "cart/addToCart",
   async ({ productId, orderId }) => {
     try {
-      const { data } = await axios.post("/api/cart", {
+      const { data } = await axios.post("/api/orderProducts", {
         productId,
-        orderId,
+        orderId
       });
       return data;
     } catch (error) {
@@ -29,9 +29,9 @@ export const addOrderProductAsync = createAsyncThunk(
 );
 
 export const deleteOrderProductAsync = createAsyncThunk(
-  "cart/deleteProduct",
+  "orderProduct/deleteProduct",
   async (id, name) => {
-    const { data } = await axios.delete(`/api/cart/${id}`, {
+    const { data } = await axios.delete(`/api/orderProducts/${id}`, {
       id,
       name,
     });
@@ -40,10 +40,10 @@ export const deleteOrderProductAsync = createAsyncThunk(
 );
 
 export const editQtyAsync = createAsyncThunk(
-  "cart/editQty",
+  "orderProduct/editQty",
   async ({ id, quantity }) => {
     try {
-      const { data } = await axios.put(`/api/cart/${id}`, {
+      const { data } = await axios.put(`/api/orderProducts/${id}`, {
         quantity,
       });
       return data;
@@ -53,8 +53,8 @@ export const editQtyAsync = createAsyncThunk(
   }
 );
 
-export const shoppingCartSlice = createSlice({
-  name: "carts",
+export const orderProductSlice = createSlice({
+  name: "orderProducts",
   initialState: [],
   reducers: {},
   extraReducers: (builder) => {
@@ -73,6 +73,6 @@ export const shoppingCartSlice = createSlice({
   },
 });
 
-export const selectCart = (state) => state.carts;
+export const selectOrderProduct = (state) => state.orderProducts;
 
-export default shoppingCartSlice.reducer;
+export default orderProductSlice.reducer;

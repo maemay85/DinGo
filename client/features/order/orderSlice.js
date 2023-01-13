@@ -36,6 +36,9 @@ export const orderSlice = createSlice({
     builder.addCase(createOrderAsync.fulfilled, (state, action) => {
       state.push(action.payload);
     });
+    builder.addCase(fetchSingleOrderAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
   },
 });
 
