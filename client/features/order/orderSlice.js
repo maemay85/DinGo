@@ -16,6 +16,18 @@ export const createOrderAsync = createAsyncThunk(
   }
 );
 
+export const fetchSingleOrderAsync = createAsyncThunk(
+  "cart/fetchSingleOrder",
+  async (id) => {
+    try {
+      const { data } = await axios.get(`/api/order/${id}`);
+      return data;
+    } catch (err) {
+      return err.message;
+    }
+  }
+);
+
 export const orderSlice = createSlice({
   name: "order",
   initialState: [],

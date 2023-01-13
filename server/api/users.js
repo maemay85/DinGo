@@ -21,7 +21,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:orderId", async (req, res, next) => {
+router.get("/:userId", async (req, res, next) => {
   try {
     res.json(await User.findByPk(req.params.userId));
   } catch (err) {
@@ -37,7 +37,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/:orderId", async (req, res, next) => {
+router.put("/:userId", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId);
     res.send(await user.update(req.body));
@@ -46,7 +46,7 @@ router.put("/:orderId", async (req, res, next) => {
   }
 });
 
-router.delete("/:orderId", async (req, res, next) => {
+router.delete("/:userId", async (req, res, next) => {
   try {
     await User.destroy({
       where: {

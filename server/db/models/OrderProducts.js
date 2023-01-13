@@ -6,11 +6,11 @@ const OrderProducts = db.define(
   {
     orderProductQty: {
       type: Sequelize.INTEGER,
-      default: 0,
+      default: 1,
     },
     totalPrice: {
       type: Sequelize.DECIMAL(5, 2),
-      min: 0.0,
+      min: 0.1,
     },
   },
   { timestamps: false }
