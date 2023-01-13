@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const OrderProducts = require("../db/models/OrderProducts");
+const Order = require("../db/models/Order");
 
 module.exports = router;
 
@@ -26,7 +27,19 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    res.send(await OrderProducts.create(req.body));
+    const [order] = await Order.findOrCreate({
+      where: {
+        // id: req.body.id,
+        isComplete: false,
+        userId: req.body.userId,
+      },
+    });
+    const addToCart = OrderProducts.build(req.body);
+    addToCart.setOrder(order, { save: false });
+    await addToCart.save();
+    const returnAddToCart = addToCart.toJSON();
+    returnAddToCart.order = order;
+    res.json(returnAddToCart);
   } catch (err) {
     next(err);
   }
@@ -34,7 +47,9 @@ router.post("/", async (req, res, next) => {
 
 router.put("/:orderProductsId", async (req, res, next) => {
   try {
-    const orderProducts = await OrderProducts.findByPk(req.params.orderProductsId);
+    const orderProducts = await OrderProducts.findByPk(
+      req.params.orderProductsId
+    );
     res.send(await orderProducts.update(req.body));
   } catch (err) {
     next(err);

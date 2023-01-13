@@ -15,12 +15,11 @@ export const fetchSingleOrderProductAsync = createAsyncThunk(
 
 export const addOrderProductAsync = createAsyncThunk(
   "cart/addToCart",
-  async ({ id, name, price }) => {
+  async ({ productId, orderId }) => {
     try {
       const { data } = await axios.post("/api/cart", {
-        id,
-        name,
-        price,
+        productId,
+        orderId,
       });
       return data;
     } catch (error) {
