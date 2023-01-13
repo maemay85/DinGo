@@ -6,11 +6,11 @@ import {
   selectSingleProduct,
 } from "./singleProductSlice"
 import { addOrderProductAsync } from "../cart/orderProductSlice";
+import { fetchSingleOrderAsync } from "../order/orderSlice";
 
 const SingleProduct = (props) => {
 
   const product = props.productId;
-console.log('product: ', product)
 
   //const singleProduct = useSelector(selectSingleProduct);
   const { productName, description, imageUrl, price, inventory } = product;
@@ -25,7 +25,11 @@ console.log('product: ', product)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //const orderId = await dispatch(fetchSingleOrderAsync);
+
     await dispatch(addOrderProductAsync({productId, orderId}));
+
+
   };
 
   return (
