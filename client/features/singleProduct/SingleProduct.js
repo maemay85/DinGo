@@ -4,15 +4,17 @@ import { useParams } from "react-router-dom";
 import {
   fetchSingleProduct,
   selectSingleProduct,
-} from "../features/singleProduct/singleProductSlice";
-import { addOrderProductAsync } from "../cart/cartSlice";
+} from "./singleProductSlice"
+import { addOrderProductAsync } from "../cart/orderProductSlice";
 
-const SingleProduct = () => {
-  const { productId } = useParams();
+const SingleProduct = (props) => {
+  const productId = props.productId;
+
 
   const singleProduct = useSelector(selectSingleProduct);
   const { productName, description, imageUrl, price, inventory } =
     singleProduct;
+  const orderId = 1;
 
   const dispatch = useDispatch();
 
@@ -22,7 +24,7 @@ const SingleProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch({ productId, orderId });
+    await dispatch(addOrderProductAsync({productId, orderId}));
   };
 
   return (
@@ -33,7 +35,7 @@ const SingleProduct = () => {
       <p>Price: {price}</p>
       <p>Available: {inventory}</p>
 
-      <button type="submit" onSubmit={handleSubmit}>
+      <button type="submit" onClick={handleSubmit}>
         Add to Cart
       </button>
     </div>

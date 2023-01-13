@@ -10,16 +10,18 @@ import { CardContent } from "@mui/material";
 import Card from "@mui/material/Card";
 
 import Grid from "@mui/material/Grid";
+import SingleProduct from "../singleProduct/SingleProduct";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
 
+
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
-  return (
+  /* return (
     <div className="all-items">
       <Grid
         container
@@ -73,7 +75,18 @@ const AllProducts = () => {
           : null}
       </Grid>
     </div>
-  );
+  ); */
+
+  return (
+    <>
+    {products && products.length ? products.map((product)=>{
+      return(
+      <div key={product.id}>
+        <SingleProduct productId={product.id}/>
+      </div>)
+    }) : null}
+    </>
+  )
 };
 
 export default AllProducts;
