@@ -8,12 +8,13 @@ import {
 import { addOrderProductAsync } from "../cart/orderProductSlice";
 
 const SingleProduct = (props) => {
-  const productId = props.productId;
 
+  const product = props.productId;
+console.log('product: ', product)
 
-  const singleProduct = useSelector(selectSingleProduct);
-  const { productName, description, imageUrl, price, inventory } =
-    singleProduct;
+  //const singleProduct = useSelector(selectSingleProduct);
+  const { productName, description, imageUrl, price, inventory } = product;
+  const productId = product.id;
   const orderId = 1;
 
   const dispatch = useDispatch();

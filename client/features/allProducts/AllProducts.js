@@ -82,7 +82,7 @@ const AllProducts = () => {
     {products && products.length ? products.map((product)=>{
       return(
       <div key={product.id}>
-        <SingleProduct productId={product.id}/>
+        <SingleProduct productId={product}/>
       </div>)
     }) : null}
     </>
