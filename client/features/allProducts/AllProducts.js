@@ -16,13 +16,12 @@ const AllProducts = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
 
-
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
 
-  /* return (
-    <div className="all-items">
+  return (
+    /* <div className="all-items">
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -75,18 +74,23 @@ const AllProducts = () => {
           : null}
       </Grid>
     </div>
-  ); */
+  );
+};
+*/
 
-  return (
+    // return (
     <>
-    {products && products.length ? products.map((product)=>{
-      return(
-      <div key={product.id}>
-        <SingleProduct productId={product}/>
-      </div>)
-    }) : null}
+      {products && products.length
+        ? products.map((product) => {
+            return (
+              <div key={product.id}>
+                <SingleProduct productId={product} />
+              </div>
+            );
+          })
+        : null}
     </>
-  )
+  );
 };
 
 export default AllProducts;
