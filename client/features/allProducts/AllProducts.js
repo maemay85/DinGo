@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllProducts, fetchAllProductsAsync } from "./allProductsSlice";
 import { Link } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
-
 import CardMedia from "@mui/material/CardMedia";
 import { CardContent } from "@mui/material";
 import Card from "@mui/material/Card";
-
+import CardActions from "@mui/material/CardActions";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import SingleProduct from "../singleProduct/SingleProduct";
 
 const AllProducts = () => {
@@ -21,7 +20,7 @@ const AllProducts = () => {
   }, [dispatch]);
 
   return (
-    /* <div className="all-items">
+    <div className="all-items">
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -50,15 +49,15 @@ const AllProducts = () => {
                       width="300"
                     />
                     <CardContent>
-                      <Link to={`/products/${product.id}`}>
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          align="center"
-                        >
-                          {product.name}
-                        </Typography>
-                      </Link>
+                      {/* <Link to={`/products/${product.id}`}> */}
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        align="center"
+                      >
+                        {product.name}
+                      </Typography>
+                      {/* </Link> */}
                       <Typography
                         variant="body2"
                         color="text.secondary"
@@ -67,6 +66,19 @@ const AllProducts = () => {
                         {product.price}
                       </Typography>
                     </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        component={Link}
+                        to={`/products/${product.id}`}
+                        key={product.id}
+                        sx={{
+                          display: "flex",
+                        }}
+                      >
+                        Learn More
+                      </Button>
+                    </CardActions>
                   </Card>
                 </div>
               );
@@ -76,21 +88,20 @@ const AllProducts = () => {
     </div>
   );
 };
-*/
 
-    // return (
-    <>
-      {products && products.length
-        ? products.map((product) => {
-            return (
-              <div key={product.id}>
-                <SingleProduct productId={product} />
-              </div>
-            );
-          })
-        : null}
-    </>
-  );
-};
+//     // return (
+//     <>
+//       {products && products.length
+//         ? products.map((product) => {
+//             return (
+//               <div key={product.id}>
+//                 <SingleProduct productId={product} />
+//               </div>
+//             );
+//           })
+//         : null}
+//     </>
+//   );
+// };
 
 export default AllProducts;

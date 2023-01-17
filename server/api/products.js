@@ -18,6 +18,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:productId", async (req, res, next) => {
   try {
+    console.log("hello");
     res.json(await Product.findByPk(req.params.productId));
   } catch (err) {
     next(err);
