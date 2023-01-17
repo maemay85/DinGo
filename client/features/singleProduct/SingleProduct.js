@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  fetchSingleProduct,
-  selectSingleProduct,
-} from "./singleProductSlice"
+import { fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
 import { addOrderProductAsync } from "../cart/orderProductSlice";
 import { fetchSingleOrderAsync } from "../order/orderSlice";
 
 const SingleProduct = (props) => {
-
+  const { id } = useSelector((state) => state.auth.me);
   const product = props.productId;
 
-  //const singleProduct = useSelector(selectSingleProduct);
+  // console.log("USER", user);
+
   const { productName, description, imageUrl, price, inventory } = product;
   const productId = product.id;
   const orderId = 1;
@@ -27,9 +25,7 @@ const SingleProduct = (props) => {
     e.preventDefault();
     //const orderId = await dispatch(fetchSingleOrderAsync);
 
-    await dispatch(addOrderProductAsync({productId, orderId}));
-
-
+    await dispatch(addOrderProductAsync({ productId, orderId, id }));
   };
 
   return (

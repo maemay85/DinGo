@@ -422,6 +422,9 @@ async function seed() {
   try {
     await db.sync({ force: true }); // clears db and matches models to tables
     console.log("db synced!");
+    console.log("ORDER METHODS ", Object.keys(Order.prototype));
+    console.log("PRODUCT METHODS ", Object.keys(Product.prototype));
+    console.log("USER METHODS ", Object.keys(User.prototype));
 
     // Creating Users, Products and Orders.
     await Promise.all(

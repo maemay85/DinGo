@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const OrderProducts = require("../db/models/OrderProducts");
-const Order = require("../db/models/Order");
+// const OrderProducts = require("../db/models/OrderProducts");
+// const Order = require("../db/models/Order");
+const { Order, User, OrderProducts, Product } = require("../db/models");
 
 module.exports = router;
 
@@ -25,33 +26,42 @@ router.get("/", async (req, res, next) => {
   }
 }); */
 
-/* router.post("/", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
-    const [order] = await Order.findOrCreate({
+    // if order exists, add product to order
+    const id = req.body.id;
+    const productId = req.body.productId;
+    // console.log("PRODUCT ID ", productId);
+    const [order, created] = await Order.findOrCreate({
       where: {
-        // id: req.body.id,
         isComplete: false,
-        userId: req.body.userId,
+        userId: id,
       },
     });
-    const addToCart = OrderProducts.build(req.body);
-    addToCart.setOrder(order, { save: false });
-    await addToCart.save();
-    const returnAddToCart = addToCart.toJSON();
-    returnAddToCart.order = order;
-    res.json(returnAddToCart);
+    // console.log("ORDER", order);
+    // const user = await User.findByToken(id);
+
+    // const addToCart = await OrderProducts.build(req.body);
+    // addToCart.setOrder(order, { save: false });
+    // await addToCart.save();
+    // const returnAddToCart = addToCart.toJSON();
+    // returnAddToCart.order = order;
+    // res.json(returnAddToCart);
+    await order.addProduct(productId);
+    const reload = await order.reload({ include: Product });
+    console.log("RELOAD ", reload);
   } catch (err) {
     next(err);
   }
-}); */
+});
 
-router.post("/", async(req, res, next) => {
-  try {
-    res.json(await OrderProducts.create(req.body))
-  } catch(err) {
-    next(err)
-  }
-})
+// router.post("/", async(req, res, next) => {
+//   try {
+//     res.json(await OrderProducts.create(req.body))
+//   } catch(err) {
+//     next(err)
+//   }
+// })
 
 router.put("/:orderProductsId", async (req, res, next) => {
   try {
