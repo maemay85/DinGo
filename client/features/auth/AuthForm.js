@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 /**
   The AuthForm component can be used for Login. See SignUp component for creating a new account.
-  Props for Login: name="login", displayName="Login"
-  Props for Sign up: name="signup", displayName="Sign Up"
 **/
 
 const AuthForm = () => {
