@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1>DinGo - Dinner, to go! wow!</h1>
+      <h1>DinGo - Dinner, to go!</h1>
       <nav>
         {isLoggedIn ? (
           <div>
