@@ -31,7 +31,7 @@ const Navbar = () => {
             {/* The navbar will show these links before you log in */}
             {/* <Link to="/login">Login</Link> */}
             <Link to="/login"><button>login</button></Link>
-            or
+            Or
             <Link to="/signup"><button>sign up</button></Link>
           </div>
         )}
